@@ -5,13 +5,13 @@
   "type": "module",
   "description": "GraphQL API for the Penance TCG demo.",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "cross-env PENANCE_ENV=local tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
-    "seed": "tsx scripts/seed.ts",
+    "seed": "cross-env PENANCE_ENV=local tsx scripts/seed.ts",
     "dynamodb:local": "dynalite --port 8000",
-    "dynamodb:ui": "dynamodb-admin"
+    "dynamodb:ui": "cross-env DYNAMO_ENDPOINT=http://localhost:8000 PORT=8002 npx dynamodb-admin"
   },
   "dependencies": {
     "@apollo/server": "^5.0.0",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
+    "cross-env": "^7.0.3",
     "dynalite": "^4.0.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.3"

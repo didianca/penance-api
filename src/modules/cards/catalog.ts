@@ -1,7 +1,6 @@
 import type { EffectTypeKey } from "../effects/catalog.js";
 
 // Card templates for seeding. Seeded to DynamoDB; IDs assigned at seed time.
-// Cards reference card effects by key; effect type is inferred from the effect definition.
 export const cardTemplates = [
   {
     name: "Ashen Witness",

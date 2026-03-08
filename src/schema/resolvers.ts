@@ -5,10 +5,11 @@ import {
 import { getCardById, listCards } from "../modules/cards/service.js";
 import { listFactions } from "../modules/factions/service.js";
 import type { CardRecord } from "../modules/cards/catalog.js";
+import { dynamoEndpointDisplay } from "../dynamodb/client.js";
 
 export const resolvers = {
   Query: {
-    health: () => "ok",
+    health: () => `ok | dynamo: ${dynamoEndpointDisplay}`,
     cards: () => listCards(),
     card: (_parent: unknown, args: { id: string }) => getCardById(args.id),
     cardEffects: () => listCardEffects(),
