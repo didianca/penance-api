@@ -1,5 +1,4 @@
-// Factions are fixed values for the current demo, so a small in-memory
-// catalog is enough until we decide they need persistence of their own.
+// Source of truth for faction keys. Static reference data (not seeded to DB).
 export const factions = [
   "NEUTRAL",
   "PENITENT_CHOIR",
@@ -10,3 +9,4 @@ export const factions = [
 ] as const;
 
 export type FactionKey = (typeof factions)[number];
+

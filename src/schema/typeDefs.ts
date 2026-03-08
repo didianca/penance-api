@@ -15,7 +15,7 @@ export const typeDefs = `#graphql
     ROOTBOUND_COVENANT
   }
 
-  enum EffectType {
+  enum CardEffectType {
     MARTYRDOM
     REVIVAL
     BESTOW
@@ -25,8 +25,8 @@ export const typeDefs = `#graphql
     BANISH
   }
 
-  type EffectDefinition {
-    key: EffectType!
+  type CardEffect {
+    key: CardEffectType!
     title: String!
     description: String!
   }
@@ -40,15 +40,14 @@ export const typeDefs = `#graphql
     health: Int!
     rarity: Rarity!
     faction: Faction!
-    effectTypes: [EffectType!]!
-    effects: [EffectDefinition!]!
+    cardEffects: [CardEffect!]!
   }
 
   type Query {
     health: String!
     cards: [CardTemplate!]!
     card(id: ID!): CardTemplate
-    effects: [EffectDefinition!]!
+    cardEffects: [CardEffect!]!
     factions: [Faction!]!
   }
 `;
