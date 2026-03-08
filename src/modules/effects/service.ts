@@ -1,16 +1,13 @@
-import { effects, effectsByKey, type EffectTypeKey } from "./catalog.js";
+import { cardEffects, cardEffectsByKey, type EffectTypeKey } from "./catalog.js";
 
-export function listEffects() {
-  return effects;
+export function listCardEffects(): (typeof cardEffects)[number][] {
+  return [...cardEffects];
 }
 
-export function getEffectsByKeys(effectTypes: readonly EffectTypeKey[]) {
-  return effectTypes
-    .map((effectType) => effectsByKey.get(effectType))
+export function getCardEffectsByKeys(keys: readonly EffectTypeKey[]): (typeof cardEffects)[number][] {
+  return keys
+    .map((key) => cardEffectsByKey.get(key))
     .filter(
-      (
-        effect,
-      ): effect is (typeof effects)[number] =>
-        effect !== undefined,
+      (effect): effect is (typeof cardEffects)[number] => effect !== undefined,
     );
 }

@@ -1,6 +1,7 @@
 import type { EffectTypeKey } from "../effects/catalog.js";
 
-// Card templates for seeding. IDs are generated at seed time and stored in DynamoDB.
+// Card templates for seeding. Seeded to DynamoDB; IDs assigned at seed time.
+// Cards reference card effects by key; effect type is inferred from the effect definition.
 export const cardTemplates = [
   {
     name: "Ashen Witness",
@@ -10,7 +11,7 @@ export const cardTemplates = [
     health: 4,
     rarity: "RARE",
     faction: "PENITENT_CHOIR",
-    effectTypes: ["MARTYRDOM", "BESTOW"] as readonly EffectTypeKey[],
+    cardEffects: ["MARTYRDOM", "BESTOW"] as readonly EffectTypeKey[],
   },
   {
     name: "Basilica Warden",
@@ -20,7 +21,7 @@ export const cardTemplates = [
     health: 5,
     rarity: "EPIC",
     faction: "SILENT_BASILICA",
-    effectTypes: ["CURSE", "IMPRISON"] as readonly EffectTypeKey[],
+    cardEffects: ["CURSE", "IMPRISON"] as readonly EffectTypeKey[],
   },
   {
     name: "Censer Prophet",
@@ -30,7 +31,7 @@ export const cardTemplates = [
     health: 4,
     rarity: "LEGENDARY",
     faction: "TRIBUNAL_OF_ASH",
-    effectTypes: ["PREACH", "REVIVAL"] as readonly EffectTypeKey[],
+    cardEffects: ["PREACH", "REVIVAL"] as readonly EffectTypeKey[],
   },
 ] as const;
 

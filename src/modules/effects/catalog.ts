@@ -1,7 +1,5 @@
-// This module is the source of truth for fixed effect metadata.
-// The GraphQL layer can read from here without needing to know how
-// the effect list is stored or generated.
-export const effects = [
+// Source of truth for card effect definitions. Static reference data (not seeded to DB).
+export const cardEffects = [
   {
     key: "MARTYRDOM",
     title: "Martyrdom",
@@ -39,10 +37,8 @@ export const effects = [
   },
 ] as const;
 
-export type EffectTypeKey = (typeof effects)[number]["key"];
+export type EffectTypeKey = (typeof cardEffects)[number]["key"];
 
-// This lookup map is useful when a card stores only effect keys and
-// we need to expand them into full effect objects for GraphQL.
-export const effectsByKey = new Map(
-  effects.map((effect) => [effect.key, effect]),
+export const cardEffectsByKey = new Map(
+  cardEffects.map((effect) => [effect.key, effect]),
 );

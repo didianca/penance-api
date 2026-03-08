@@ -3,7 +3,7 @@ import { docClient } from "../../dynamodb/client.js";
 import { tableName } from "../../dynamodb/tableNames.js";
 import type { CardRecord } from "./catalog.js";
 
-const table = tableName("");
+const table = tableName();
 
 function itemToCard(item: Record<string, unknown>): CardRecord {
   const { pk, sk, ...rest } = item;

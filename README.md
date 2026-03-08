@@ -16,9 +16,8 @@ This API is being built to support:
 The current GraphQL schema models a card-definition style domain:
 
 - `CardTemplate`
-- `Effect`
+- `CardEffect`
 - `Faction`
-- `EffectType`
 
 ## Current Stack
 
@@ -55,7 +54,7 @@ The API currently supports read-side development with mock in-memory data for:
 - `health`
 - `cards`
 - `card(id)`
-- `effects`
+- `cardEffects`
 - `factions`
 
 This is intentional. The project is being built in layers:
@@ -67,7 +66,8 @@ This is intentional. The project is being built in layers:
 
 ## DynamoDB and environment
 
-- **PENANCE_ENV** chooses the backend: `local` (DynamoDB Local) or `dev` (hosted AWS). Table naming follows **`penance-{env}-{table}`**, e.g. `penance-local-cards`, `penance-dev-cards`. 
+- **PENANCE_ENV** chooses the backend: `local` (DynamoDB Local) or `dev` (hosted AWS). Table naming follows **`penance-{env}`** (single table), e.g. `penance-local`, `penance-dev`.
+- **Seeded data:** only cards are written by `npm run seed`. Factions and card effects are static reference data in `src/modules` and are not stored in DynamoDB. 
 
 ## Local Development
 
@@ -118,8 +118,7 @@ query {
     name
     rarity
     faction
-    effectTypes
-    effects {
+    cardEffects {
       key
       title
       description

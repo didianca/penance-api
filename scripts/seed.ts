@@ -1,3 +1,8 @@
+/**
+ * Seeds persisted data into DynamoDB.
+ * Only cards are seeded here. Factions and card effects are static reference data
+ * in src/modules (factions/catalog.ts, effects/catalog.ts) and are not stored in the DB.
+ */
 import "dotenv/config";
 import { CreateTableCommand, DescribeTableCommand } from "@aws-sdk/client-dynamodb";
 import { BatchWriteCommand, PutCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
@@ -6,7 +11,7 @@ import { dynamo, docClient } from "../src/dynamodb/client.js";
 import { tableName } from "../src/dynamodb/tableNames.js";
 import { cardTemplates } from "../src/modules/cards/catalog.js";
 
-const table = tableName("");
+const table = tableName();
 
 async function ensureTable(): Promise<void> {
   try {

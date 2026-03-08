@@ -5,7 +5,6 @@ import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 const env = process.env.PENANCE_ENV ?? "local";
 
 // For DynamoDB Local we must point the client at our local endpoint (e.g. port 8000).
-// Without this, the SDK would try to hit AWS in the cloud. The endpoint option overrides the default.
 const isLocal = env === "local";
 
 const dynamoClient = new DynamoDBClient({

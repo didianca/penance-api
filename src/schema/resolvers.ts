@@ -1,6 +1,6 @@
 import {
-  getEffectsByKeys,
-  listEffects,
+  getCardEffectsByKeys,
+  listCardEffects,
 } from "../modules/effects/service.js";
 import { getCardById, listCards } from "../modules/cards/service.js";
 import { listFactions } from "../modules/factions/service.js";
@@ -11,12 +11,11 @@ export const resolvers = {
     health: () => "ok",
     cards: () => listCards(),
     card: (_parent: unknown, args: { id: string }) => getCardById(args.id),
-    effects: () => listEffects(),
+    cardEffects: () => listCardEffects(),
     factions: () => listFactions(),
   },
   CardTemplate: {
-    // Cards store only effect keys, so this nested resolver asks the
-    // effect service to expand those keys into full effect objects.
-    effects: (card: CardRecord) => getEffectsByKeys(card.effectTypes),
+    // Cards store effect keys; this resolver expands them into full card effect objects (types inferred from definitions).
+    cardEffects: (card: CardRecord) => getCardEffectsByKeys(card.cardEffects),
   },
 };
