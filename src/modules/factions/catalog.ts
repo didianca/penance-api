@@ -2,9 +2,6 @@
 export const factions = [
   "NEUTRAL",
   "PENITENT_CHOIR",
-  "SILENT_BASILICA",
-  "OSSUARY_THRONE",
-  "TRIBUNAL_OF_ASH",
   "ROOTBOUND_COVENANT",
 ] as const;
 
