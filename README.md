@@ -71,17 +71,37 @@ This is intentional. The project is being built in layers:
 
 ## Local Development
 
-Install dependencies:
+### First-time setup
 
-```bash
-npm install
-```
+From a fresh clone:
 
-Start the dev server:
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-```
+2. **Start local DynamoDB (Dynalite)** — leave this running in one terminal.
+   ```bash
+   npm run dynamodb:local
+   ```
+
+3. **Seed the database** — in a second terminal (with Dynalite already running).
+   ```bash
+   npm run seed
+   ```
+
+4. **Start the API** — in the same or another terminal.
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the API** at **http://localhost:4000** (e.g. Apollo Sandbox for GraphQL).
+
+Optional: run `npm run dynamodb:ui` to browse tables at **http://localhost:8001** (Dynalite must be running).
+
+### Day-to-day
+
+Run `npm run dynamodb:local` and `npm run dev` in two terminals. Re-run `npm run seed` only when you want to reset/refresh card data from the catalog.
 
 The server runs locally at:
 
