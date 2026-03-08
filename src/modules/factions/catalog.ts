@@ -10,3 +10,4 @@ export const factions = [
 ] as const;
 
 export type FactionKey = (typeof factions)[number];
+
